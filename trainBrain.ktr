@@ -144,11 +144,11 @@
 <reservoir_sampling_size/>
 <reservoir_sampling_seed>1</reservoir_sampling_seed>
 <include_input_as_output>N</include_input_as_output>
-<py_script>&#x23; python script&#xd;&#xa;&#xd;&#xa;import pandas as pd&#xd;&#xa;&#xd;&#xa;dados &#x3d; pd.DataFrame&#x28;dados&#x29;&#xd;&#xa;&#xd;&#xa;dados.values</py_script>
+<py_script>&#x23; python script&#xd;&#xa;&#xd;&#xa;&#x23; Import dos m&#xf3;dulos&#xd;&#xa;from sklearn import cross_validation&#xd;&#xa;from sklearn.ensemble import BaggingClassifier&#xd;&#xa;from sklearn.tree import DecisionTreeClassifier&#xd;&#xa;&#xd;&#xa;&#x23; Carregando os dados&#xd;&#xa;array &#x3d; dados.values&#xd;&#xa;&#xd;&#xa;&#x23; Separando o array em componentes de input e output&#xd;&#xa;X &#x3d; array&#x5b;&#x3a;,0&#x3a;8&#x5d;&#xd;&#xa;Y &#x3d; array&#x5b;&#x3a;,8&#x5d;&#xd;&#xa;&#xd;&#xa;&#x23; Definindo os valores para o n&#xfa;mero de folds&#xd;&#xa;num_folds &#x3d; 10&#xd;&#xa;num_instances &#x3d; len&#x28;X&#x29;&#xd;&#xa;seed &#x3d; 7&#xd;&#xa;&#xd;&#xa;&#x23; Separando os dados em folds&#xd;&#xa;kfold &#x3d; cross_validation.KFold&#x28;n &#x3d; num_instances, n_folds &#x3d; num_folds, random_state &#x3d; seed&#x29;&#xd;&#xa;cart &#x3d; DecisionTreeClassifier&#x28;&#x29;&#xd;&#xa;&#xd;&#xa;&#x23; Definindo o n&#xfa;mero de trees&#xd;&#xa;num_trees &#x3d; 100&#xd;&#xa;&#xd;&#xa;&#x23; Criando o modelo&#xd;&#xa;modelo &#x3d; BaggingClassifier&#x28;base_estimator &#x3d; cart, n_estimators &#x3d; num_trees, random_state &#x3d; seed&#x29;&#xd;&#xa;resultado &#x3d; cross_validation.cross_val_score&#x28;modelo, X, Y, cv &#x3d; kfold&#x29;&#xd;&#xa;&#xd;&#xa;&#x23; Print do resulatdo&#xd;&#xa;result &#x3d; resultado.mean&#x28;&#x29;</py_script>
 <load_script_at_runtime>N</load_script_at_runtime>
 <script_to_load/>
 <continue_on_unset_vars>N</continue_on_unset_vars>
-<py_vars_to_get>dados</py_vars_to_get>
+<py_vars_to_get>result</py_vars_to_get>
 <include_frame_row_index>N</include_frame_row_index>
    <frame_names>
     <frame_name0>dados</frame_name0>
@@ -158,14 +158,14 @@
    </incoming_step_names>
    <output_fields>
         <output_field>
-            <field_name>dados</field_name>
+            <field_name>result</field_name>
 
             <type>String</type>
         </output_field>
     </output_fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>256</xloc>
+      <xloc>272</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
       </GUI>
