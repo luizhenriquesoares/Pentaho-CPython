@@ -102,10 +102,10 @@
   <hop> <from>predict</from><to>Confusion Matrix</to><enabled>N</enabled> </hop>
   <hop> <from>CSV input</from><to>Criar o modelo e salva</to><enabled>Y</enabled> </hop>
   <hop> <from>Criar o modelo e salva</from><to>predict</to><enabled>N</enabled> </hop>
-  <hop> <from>Criar o modelo e salva</from><to>Acur&#xe1;cia do modelo</to><enabled>Y</enabled> </hop>
+  <hop> <from>Criar o modelo e salva</from><to>Treina o modelo, e acuracia</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Acur&#xe1;cia do modelo</name>
+    <name>Treina o modelo, e acuracia</name>
     <type>CPythonScriptExecutor</type>
     <description/>
     <distribute>Y</distribute>
@@ -121,11 +121,11 @@
 <reservoir_sampling_size/>
 <reservoir_sampling_seed>1</reservoir_sampling_seed>
 <include_input_as_output>N</include_input_as_output>
-<py_script>&#x23; python script&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;</py_script>
+<py_script>&#x23; python script&#xd;&#xa;&#xd;&#xa;modelo.fit&#x28;X_treino, Y_treino&#x29;&#xd;&#xa;&#xd;&#xa;&#x23; Score&#xd;&#xa;acuracia &#x3d; modelo.score&#x28;X_teste, Y_teste&#x29;&#xd;&#xa;&#xd;&#xa;accuracy &#x3d; acuracia &#x2a; 100.0&#xd;&#xa;&#xd;&#xa;</py_script>
 <load_script_at_runtime>N</load_script_at_runtime>
 <script_to_load/>
 <continue_on_unset_vars>N</continue_on_unset_vars>
-<py_vars_to_get>df,acuracia</py_vars_to_get>
+<py_vars_to_get>df,accuracy</py_vars_to_get>
 <include_frame_row_index>N</include_frame_row_index>
    <frame_names>
     <frame_name0>df</frame_name0>
@@ -135,7 +135,7 @@
    </incoming_step_names>
    <output_fields>
         <output_field>
-            <field_name>acuracia</field_name>
+            <field_name>accuracy</field_name>
 
             <type>String</type>
         </output_field>
@@ -226,7 +226,7 @@
 <reservoir_sampling_size/>
 <reservoir_sampling_seed>1</reservoir_sampling_seed>
 <include_input_as_output>N</include_input_as_output>
-<py_script>&#x23; python script&#xd;&#xa;&#xd;&#xa;from pandas import read_csv&#xd;&#xa;from pandas import DataFrame&#xd;&#xa;from sklearn import cross_validation&#xd;&#xa;from sklearn.linear_model import LogisticRegression&#xd;&#xa;from sklearn.metrics import confusion_matrix&#xd;&#xa;import csv&#xd;&#xa;&#xd;&#xa;array &#x3d; df.values&#xd;&#xa;&#xd;&#xa;&#x23; Separando o array em componentes de input e output&#xd;&#xa;X &#x3d; array&#x5b;&#x3a;,0&#x3a;8&#x5d;&#xd;&#xa;Y &#x3d; array&#x5b;&#x3a;,8&#x5d;&#xd;&#xa;&#xd;&#xa;&#x23; Definindo o tamanho do conjunto de dados&#xd;&#xa;teste_size &#x3d; 0.33&#xd;&#xa;seed &#x3d; 7&#xd;&#xa;&#xd;&#xa;&#x23; Criando os conjuntos de dados de treino e de teste&#xd;&#xa;X_treino, X_teste, Y_treino, Y_teste &#x3d; cross_validation.train_test_split&#x28;X, Y,  test_size &#x3d; teste_size, random_state &#x3d; seed&#x29;&#xd;&#xa;&#xd;&#xa;&#x23; Cria&#xe7;&#xe3;o do modelo&#xd;&#xa;modelo &#x3d; LogisticRegression&#x28;&#x29;&#xd;&#xa;modelo.fit&#x28;X_treino, Y_treino&#x29;&#xd;&#xa;&#xd;&#xa;&#x23; Score&#xd;&#xa;acuracia &#x3d; modelo.score&#x28;X_teste, Y_teste&#x29;&#xd;&#xa;&#xd;&#xa;acuracia &#x3d; acuracia &#x2a; 100.0</py_script>
+<py_script>&#x23; python script&#xd;&#xa;&#xd;&#xa;from pandas import read_csv&#xd;&#xa;from pandas import DataFrame&#xd;&#xa;from sklearn import cross_validation&#xd;&#xa;from sklearn.linear_model import LogisticRegression&#xd;&#xa;from sklearn.metrics import confusion_matrix&#xd;&#xa;import csv&#xd;&#xa;&#xd;&#xa;array &#x3d; df.values&#xd;&#xa;&#xd;&#xa;&#x23; Separando o array em componentes de input e output&#xd;&#xa;X &#x3d; array&#x5b;&#x3a;,0&#x3a;8&#x5d;&#xd;&#xa;Y &#x3d; array&#x5b;&#x3a;,8&#x5d;&#xd;&#xa;&#xd;&#xa;&#x23; Definindo o tamanho do conjunto de dados&#xd;&#xa;teste_size &#x3d; 0.33&#xd;&#xa;seed &#x3d; 7&#xd;&#xa;&#xd;&#xa;&#x23; Criando os conjuntos de dados de treino e de teste&#xd;&#xa;X_treino, X_teste, Y_treino, Y_teste &#x3d; cross_validation.train_test_split&#x28;X, Y,  test_size &#x3d; teste_size, random_state &#x3d; seed&#x29;&#xd;&#xa;&#xd;&#xa;&#x23; Cria&#xe7;&#xe3;o do modelo&#xd;&#xa;modelo &#x3d; LogisticRegression&#x28;&#x29;&#xd;&#xa;</py_script>
 <load_script_at_runtime>N</load_script_at_runtime>
 <script_to_load/>
 <continue_on_unset_vars>N</continue_on_unset_vars>
