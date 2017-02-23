@@ -102,14 +102,14 @@
   <hop> <from>CSV input</from><to>Criar o modelo e salva</to><enabled>Y</enabled> </hop>
   <hop> <from>Criar o modelo e salva</from><to>Acur&#xe1;cia do modelo</to><enabled>Y</enabled> </hop>
   <hop> <from>Criar o modelo e salva</from><to>predict</to><enabled>Y</enabled> </hop>
-  <hop> <from>predict</from><to>Confusion Matrix</to><enabled>N</enabled> </hop>
-  <hop> <from>Confusion Matrix</from><to>Split field to rows</to><enabled>N</enabled> </hop>
-  <hop> <from>Split field to rows</from><to>matrix de confus&#xe3;o</to><enabled>N</enabled> </hop>
-  <hop> <from>matrix de confus&#xe3;o</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>N</enabled> </hop>
-  <hop> <from>Criar o modelo e salva</from><to>Add sequence</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add sequence</from><to>Serialize to file</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add sequence 2</from><to>Serialize to file 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>predict</from><to>Add sequence 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>predict</from><to>Confusion Matrix</to><enabled>Y</enabled> </hop>
+  <hop> <from>Confusion Matrix</from><to>splita o array </to><enabled>Y</enabled> </hop>
+  <hop> <from>splita o array </from><to>matrix de confus&#xe3;o</to><enabled>Y</enabled> </hop>
+  <hop> <from>matrix de confus&#xe3;o</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Criar o modelo e salva</from><to>add chave Id</to><enabled>Y</enabled> </hop>
+  <hop> <from>add chave Id</from><to>gravar dados</to><enabled>Y</enabled> </hop>
+  <hop> <from>add chave id 2</from><to>gravar dados 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>predict</from><to>add chave id 2</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Acur&#xe1;cia do modelo</name>
@@ -149,7 +149,7 @@
     </output_fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>176</xloc>
+      <xloc>208</xloc>
       <yloc>32</yloc>
       <draw>Y</draw>
       </GUI>
@@ -176,7 +176,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>48</xloc>
-      <yloc>48</yloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -329,7 +329,7 @@
     </step>
 
   <step>
-    <name>Split field to rows</name>
+    <name>splita o array </name>
     <type>SplitFieldToRows3</type>
     <description/>
     <distribute>Y</distribute>
@@ -423,7 +423,7 @@
     </step>
 
   <step>
-    <name>Add sequence</name>
+    <name>add chave Id</name>
     <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
@@ -452,7 +452,7 @@
     </step>
 
   <step>
-    <name>Serialize to file</name>
+    <name>gravar dados</name>
     <type>CubeOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -476,7 +476,7 @@
     </step>
 
   <step>
-    <name>Add sequence 2</name>
+    <name>add chave id 2</name>
     <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
@@ -505,7 +505,7 @@
     </step>
 
   <step>
-    <name>Serialize to file 2</name>
+    <name>gravar dados 2</name>
     <type>CubeOutput</type>
     <description/>
     <distribute>Y</distribute>
