@@ -23,3 +23,8 @@
 * Executar o pima-india.ktr
 * Executar o testeBrain.ktr
 * Executar o resultTest.ktr
+
+# Contribução
+
+* Álvaro Bastos - Oncase 
+ 
