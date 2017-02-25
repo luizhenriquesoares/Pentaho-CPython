@@ -1,6 +1,6 @@
 # Machine Learning - Pentaho 
 
-## Construção de um modelo preditivo com PDI - Pentaho e Scikit-Learn
+## Modelo preditivo com PDI - Pentaho e Scikit-Learn
 
 
 * Pentaho - PDI 6
@@ -9,7 +9,7 @@
 * Step Cpython
 * Dataset - pima-india
 
-> O repositório contém transformações para previsão de um modelo preditivo construido com algoritmo de Regressão Logística
+> O repositório contém transformações para previsões de diagnósticos de paciente com doença de diabetes. O modelo preditivo construido com algoritmo de Regressão Logística, irá prever se o paciente terá a doença ou não. Descrimando a saída com valor boleano, 0 para False e 1 para True.
 
 # Arquivos contido
 
