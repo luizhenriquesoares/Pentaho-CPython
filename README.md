@@ -1,6 +1,6 @@
 # Machine Learning - Pentaho 
 
-## Construção de um modelo preditivo com PDI - Pentaho e Scikit-Learning
+## Construção de um modelo preditivo com PDI - Pentaho e Scikit-Learn
 
 
 * Pentaho - PDI 6
