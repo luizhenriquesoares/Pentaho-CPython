@@ -9,7 +9,7 @@
 * Step Cpython
 * Dataset - pima-india
 
-> o repositório contém uma transformação para previsão de um modelo preditivo construido com algoritmo de Regressão Logística
+> o repositório contém transformações para previsão de um modelo preditivo construido com algoritmo de Regressão Logística
 
 # Arquivos contido
 
