@@ -242,7 +242,7 @@
 <reservoir_sampling_size/>
 <reservoir_sampling_seed>1</reservoir_sampling_seed>
 <include_input_as_output>N</include_input_as_output>
-<py_script>&#x23; python script&#xd;&#xa;&#xd;&#xa;from pandas import read_csv&#xd;&#xa;from pandas import DataFrame&#xd;&#xa;from sklearn import cross_validation&#xd;&#xa;from sklearn.linear_model import LogisticRegression&#xd;&#xa;from sklearn.preprocessing import StandardScaler&#xd;&#xa;from sklearn.metrics import confusion_matrix&#xd;&#xa;import csv&#xd;&#xa;&#xd;&#xa;array &#x3d; df.values&#xd;&#xa;&#xd;&#xa;&#x23; Separando o array em componentes de input e output&#xd;&#xa;X &#x3d; array&#x5b;&#x3a;,0&#x3a;8&#x5d;&#xd;&#xa;Y &#x3d; array&#x5b;&#x3a;,8&#x5d;&#xd;&#xa;&#xd;&#xa;&#x23; Gerando o novo padr&#xe3;o, aplicando pr&#xe9;-processamento&#xd;&#xa;scaler &#x3d; StandardScaler&#x28;&#x29;.fit&#x28;X&#x29;&#xd;&#xa;standardX &#x3d; scaler.transform&#x28;X&#x29;&#xd;&#xa;&#xd;&#xa;&#x23; Definindo os valores para os folds&#xd;&#xa;num_folds &#x3d; 40&#xd;&#xa;num_instances &#x3d; len&#x28;X&#x29;&#xd;&#xa;seed &#x3d; 7&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;&#x23; Separando os dados em folds&#xd;&#xa;kfold &#x3d; cross_validation.KFold&#x28;n &#x3d; num_instances, n_folds &#x3d; num_folds, random_state &#x3d; seed&#x29;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;&#x23; Criando o modelo&#xd;&#xa;modelo &#x3d; LogisticRegression&#x28;&#x29;&#xd;&#xa;&#xd;&#xa;</py_script>
+<py_script>&#x23; python script&#xd;&#xa;&#xd;&#xa;from pandas import read_csv&#xd;&#xa;from pandas import DataFrame&#xd;&#xa;from sklearn import cross_validation&#xd;&#xa;from sklearn.linear_model import LogisticRegression&#xd;&#xa;from sklearn.preprocessing import StandardScaler&#xd;&#xa;from sklearn.metrics import confusion_matrix&#xd;&#xa;import csv&#xd;&#xa;&#xd;&#xa;array &#x3d; df.values&#xd;&#xa;&#xd;&#xa;&#x23; Separando o array em componentes de input e output&#xd;&#xa;X &#x3d; array&#x5b;&#x3a;,0&#x3a;8&#x5d;&#xd;&#xa;Y &#x3d; array&#x5b;&#x3a;,8&#x5d;&#xd;&#xa;&#xd;&#xa;&#x23; Gerando o novo padr&#xe3;o, aplicando pr&#xe9;-processamento&#xd;&#xa;&#x23; scaler &#x3d; StandardScaler&#x28;&#x29;.fit&#x28;X&#x29;&#xd;&#xa;&#x23; standardX &#x3d; scaler.transform&#x28;X&#x29;&#xd;&#xa;&#xd;&#xa;&#x23; Definindo os valores para os folds&#xd;&#xa;num_folds &#x3d; 40&#xd;&#xa;num_instances &#x3d; len&#x28;X&#x29;&#xd;&#xa;seed &#x3d; 7&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;&#x23; Separando os dados em folds&#xd;&#xa;kfold &#x3d; cross_validation.KFold&#x28;n &#x3d; num_instances, n_folds &#x3d; num_folds, random_state &#x3d; seed&#x29;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;&#x23; Criando o modelo&#xd;&#xa;modelo &#x3d; LogisticRegression&#x28;&#x29;&#xd;&#xa;&#xd;&#xa;</py_script>
 <load_script_at_runtime>N</load_script_at_runtime>
 <script_to_load/>
 <continue_on_unset_vars>N</continue_on_unset_vars>
@@ -329,8 +329,8 @@
     </step>
 
   <step>
-    <name>splita o array </name>
-    <type>SplitFieldToRows3</type>
+    <name>add chave Id</name>
+    <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -339,17 +339,97 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-   <splitfield>matrix</splitfield>
-   <delimiter>&#x5d;</delimiter>
-   <newfield>m</newfield>
-   <rownum>N</rownum>
-   <rownum_field/>
-   <resetrownumber>Y</resetrownumber>
-   <delimiter_is_regex>N</delimiter_is_regex>
+      <valuename>class_id</valuename>
+      <use_database>N</use_database>
+      <connection/>
+      <schema/>
+      <seqname>SEQ_</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name/>
+      <start_at>1</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>656</xloc>
-      <yloc>240</yloc>
+      <xloc>224</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>add chave id 2</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <valuename>class__resultado_id</valuename>
+      <use_database>N</use_database>
+      <connection/>
+      <schema/>
+      <seqname>SEQ_</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name/>
+      <start_at>1</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>400</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>gravar dados</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <file>
+      <name>C&#x3a;&#x5c;Users&#x5c;henri&#x5c;Desktop&#x5c;class_1.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>352</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>gravar dados 2</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <file>
+      <name>C&#x3a;&#x5c;Users&#x5c;henri&#x5c;Desktop&#x5c;class__resutl.cube</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+    </file>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>512</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -423,8 +503,8 @@
     </step>
 
   <step>
-    <name>add chave Id</name>
-    <type>Sequence</type>
+    <name>splita o array </name>
+    <type>SplitFieldToRows3</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -433,97 +513,17 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <valuename>class_id</valuename>
-      <use_database>N</use_database>
-      <connection/>
-      <schema/>
-      <seqname>SEQ_</seqname>
-      <use_counter>Y</use_counter>
-      <counter_name/>
-      <start_at>1</start_at>
-      <increment_by>1</increment_by>
-      <max_value>999999999</max_value>
+   <splitfield>matrix</splitfield>
+   <delimiter>&#x5d;</delimiter>
+   <newfield>m</newfield>
+   <rownum>N</rownum>
+   <rownum_field/>
+   <resetrownumber>Y</resetrownumber>
+   <delimiter_is_regex>N</delimiter_is_regex>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>224</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>gravar dados</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <file>
-      <name>C&#x3a;&#x5c;Users&#x5c;oncase&#x5c;Desktop&#x5c;class_1.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>352</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>add chave id 2</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <valuename>class__resultado_id</valuename>
-      <use_database>N</use_database>
-      <connection/>
-      <schema/>
-      <seqname>SEQ_</seqname>
-      <use_counter>Y</use_counter>
-      <counter_name/>
-      <start_at>1</start_at>
-      <increment_by>1</increment_by>
-      <max_value>999999999</max_value>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>gravar dados 2</name>
-    <type>CubeOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <file>
-      <name>C&#x3a;&#x5c;Users&#x5c;oncase&#x5c;Desktop&#x5c;class__resutl.cube</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-    </file>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>512</xloc>
-      <yloc>48</yloc>
+      <xloc>656</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
