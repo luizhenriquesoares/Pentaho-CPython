@@ -4,7 +4,7 @@
 
 
 * Pentaho - PDI 6
-* Scikit-learning 0.18
+* Scikit-learn 0.18
 * Regressão Lógistica
 * Step Cpython
 * Dataset - pima-india
