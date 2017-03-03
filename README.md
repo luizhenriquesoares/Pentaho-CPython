@@ -26,7 +26,7 @@
 
 ## Executando script em linha de comando
 
-<a href="#">porra qui</a>
+<a href="https://github.com/luizhenriquesoares/Pentaho-CPython/tree/master/Linha%20de%20Comando">Clique qui</a>
 
 ## Preview - PDI
 
