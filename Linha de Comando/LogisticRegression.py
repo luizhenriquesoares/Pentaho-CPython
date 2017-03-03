@@ -7,8 +7,6 @@ from sklearn import cross_validation
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import Normalizer
-from sklearn.metrics import accuracy_score
 import numpy as np
 import csv
 
@@ -36,10 +34,9 @@ kfold = cross_validation.KFold(n = num_instances, n_folds = num_folds, random_st
     
 # Criando o modelo
 modelo = LogisticRegression()
+resultado = cross_validation.cross_val_score(modelo, standardX, Y, cv = kfold)
 
-scores = cross_validation.cross_val_score(modelo, standardX, Y, cv = kfold)
-predict  = cross_validation.cross_val_predict(modelo, standardX, Y, cv = kfold)
-
+score = resultado.mean()*100.0
 predict  = cross_validation.cross_val_predict(modelo, standardX, Y, cv = kfold)
 matrix = confusion_matrix(Y, predict)
 
@@ -56,4 +53,8 @@ def writeCsvVarPredict(df, name):
 writeCsvVarPredict(predict, 'predict.csv') 
 writeCsvVarObservadoras(array,'observadoras.csv') 
 
-# teste;
+
+
+#teste
+
+
